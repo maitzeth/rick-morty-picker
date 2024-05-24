@@ -15,13 +15,14 @@ interface Props {
 
 export const CharacterItem = ({ data }: Props) => {
   return (
-    <Card className="flex hover:shadow-xl">
+    <Card className="flex hover:shadow-xl items-center px-4 py-2">
       <div className='flex-none'>
-        <div className="relative w-[80px] h-[80px]">
+        <div className="relative w-[80px] h-[80px] overflow-hidden rounded-full">
           <Image
             fill
             src={data.image}
             alt={`image of ${data.name}`}
+            className="object-cover"
           />
         </div>
       </div>

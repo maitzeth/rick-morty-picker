@@ -1,3 +1,5 @@
+import { GetCharactersResponse } from '@/types/character';
+
 /**
  * This type alias receive additional properties, including a className to allow for custom styling.
  *
@@ -10,3 +12,13 @@ export type PropsWithClassName<T = unknown> = T & {
 export type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 };
+
+export type PageParams = {
+  page: number;
+  paramsPageLabel: string;
+  title: string;
+}
+
+export type PageParamsWithData = PageParams & {
+  data: GetCharactersResponse;
+}

@@ -1,18 +1,19 @@
 import React, { Suspense } from 'react';
-import { PageProps } from '@/types/common';
+import { PageProps, PageParams } from '@/types/common';
 import { CharactersRenderer, Loader } from '../components/characters/CharacterRenderers';
+import { getCharacters } from '@/services/characters';
 
-function delay() {
-  return new Promise(resolve => setTimeout(resolve, 100000));
-}
+const CharactersFetcher = async ({ page, paramsPageLabel, title }: PageParams) => {
+  const data = await getCharacters(page);
 
-const CharactersFetcher = async ({ page, paramsPageLabel }: any) => {
-  await delay();
-  // This component will be used to fetch data;
   return (
-    <div>
-      <CharactersRenderer page={page} paramsPageLabel={paramsPageLabel} />
-    </div>
+    <CharactersRenderer
+      data={data}
+      page={page}
+      paramsPageLabel={paramsPageLabel}
+      title={title}
+      titleAlign="right"
+    />
   );
 }
 
@@ -24,15 +25,15 @@ const CharactersPage = ({
 
   return (
     <main className="min-h-screen border border-red-500">
-      <div className="container mx-auto px-4 grid grid-cols-2 gap-4 py-8">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 py-8">
         <div>
           <Suspense key={firstCharPage} fallback={<Loader />}>
-            <CharactersFetcher page={firstCharPage} paramsPageLabel="firstCharPage" />
+            <CharactersFetcher title="Character #1" page={firstCharPage} paramsPageLabel="firstCharPage" />
           </Suspense>
         </div>
         <div>
           <Suspense key={secondCharPage} fallback={<Loader />}>
-            <CharactersFetcher page={secondCharPage} paramsPageLabel="secondCharPage" />
+            <CharactersFetcher title="Character #2" page={secondCharPage} paramsPageLabel="secondCharPage" />
           </Suspense>
         </div>
       </div>
