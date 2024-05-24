@@ -3,6 +3,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { CharacterItem } from './CharactersItem';
 import { Character } from '@/types/character';
 import { SpinnerLoading } from '@/app/components/shared';
+import { PageParamsWithData } from '@/types/common';
 
 const mockData = [
   {
@@ -30,12 +31,14 @@ const mockData = [
   },
 ] as unknown as Character[];
 
-export const CharactersRenderer = ({ paramsPageLabel, page }: any) => {
-  console.log({ paramsPageLabel, page });
+export const CharactersRenderer = ({ data, page, paramsPageLabel, title }: PageParamsWithData) => {
   return (
     <div>
-      <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-4">
-        {mockData.map((character) => {
+      <header>
+        <h2>{title}</h2>
+      </header>
+      <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
+        {data.results.map((character) => {
           return (
             <CharacterItem
               key={character.id}
