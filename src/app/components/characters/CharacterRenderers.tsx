@@ -1,57 +1,35 @@
 "use client";
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { CharacterItem } from './CharactersItem';
-import { Character } from '@/types/character';
-import { SpinnerLoading } from '@/app/components/shared';
-import { PageParamsWithData } from '@/types/common';
+import { RendererProps } from '@/types/common';
+import { cn } from '@/utils/common';
 
-const mockData = [
-  {
-    "id": 1,
-    "name": "Rick Sanchez",
-    "status": "Alive",
-    "species": "Human",
-    "type": "",
-    "gender": "Male",
-    "origin": {
-      "name": "Earth",
-      "url": "https://rickandmortyapi.com/api/location/1"
-    },
-    "location": {
-      "name": "Earth",
-      "url": "https://rickandmortyapi.com/api/location/20"
-    },
-    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    "episode": [
-      "https://rickandmortyapi.com/api/episode/1",
-      "https://rickandmortyapi.com/api/episode/2",
-    ],
-    "url": "https://rickandmortyapi.com/api/character/1",
-    "created": "2017-11-04T18:48:46.250Z"
-  },
-] as unknown as Character[];
-
-export const CharactersRenderer = ({ data, page, paramsPageLabel, title }: PageParamsWithData) => {
+export const CharactersRenderer = ({ data, page, paramsPageLabel, title, alignTitle }: RendererProps) => {
   return (
     <div>
-      <header>
-        <h2>{title}</h2>
+      <header className="mb-10">
+        <h2 className={cn('text-2xl font-bold', {
+          'text-left': alignTitle === 'default',
+          'text-right': alignTitle === 'right',
+        })}>{title}</h2>
       </header>
-      <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
-        {data.results.map((character) => {
-          return (
-            <CharacterItem
-              key={character.id}
-              data={{
-                id: character.id,
-                name: character.name,
-                image: character.image,
-                status: character.status,
-                species: character.species,
-              }}
-            />
-          );
-        })}
+      <div className="border border-gray-200 p-2 rounded-xl">
+        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {data.results.map((character) => {
+            return (
+              <CharacterItem
+                key={character.id}
+                data={{
+                  id: character.id,
+                  name: character.name,
+                  image: character.image,
+                  status: character.status,
+                  species: character.species,
+                }}
+                onClick={() => console.log(character)}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   )

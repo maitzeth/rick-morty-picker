@@ -17,8 +17,9 @@ export type PageParams = {
   page: number;
   paramsPageLabel: string;
   title: string;
+  alignTitle: 'default' | 'right';
 }
 
-export type PageParamsWithData = PageParams & {
+export type RendererProps = PageParams & {
   data: GetCharactersResponse;
 }
