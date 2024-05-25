@@ -1,21 +1,7 @@
-import React, { Suspense } from 'react';
-import { PageProps, PageParams } from '@/types/common';
-import { CharactersRenderer, Loader } from '../components/characters/CharacterRenderers';
-import { getCharacters } from '@/services/characters';
-
-const CharactersFetcher = async ({ page, paramsPageLabel, title }: PageParams) => {
-  const data = await getCharacters(page);
-
-  return (
-    <CharactersRenderer
-      data={data}
-      page={page}
-      paramsPageLabel={paramsPageLabel}
-      title={title}
-      titleAlign="right"
-    />
-  );
-}
+import { PageProps } from '@/types/common';
+import { Suspense } from 'react';
+import { CharactersFetcher } from '../components/characters/CharacterFetcher';
+import { Loader } from '../components/characters/CharacterRenderers';
 
 const CharactersPage = ({
   searchParams
@@ -24,16 +10,26 @@ const CharactersPage = ({
   const secondCharPage = typeof searchParams.secondCharPage === 'string' ? Number(searchParams.secondCharPage) : 1;
 
   return (
-    <main className="min-h-screen border border-red-500">
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 py-8">
+    <main className="min-h-screen">
+      <div className="max-w-[2440px] mx-auto px-2 grid md:grid-cols-2 gap-3 py-8">
         <div>
           <Suspense key={firstCharPage} fallback={<Loader />}>
-            <CharactersFetcher title="Character #1" page={firstCharPage} paramsPageLabel="firstCharPage" />
+            <CharactersFetcher
+              alignTitle="default"
+              title="Character #1"
+              page={firstCharPage}
+              paramsPageLabel="firstCharPage"
+            />
           </Suspense>
         </div>
         <div>
           <Suspense key={secondCharPage} fallback={<Loader />}>
-            <CharactersFetcher title="Character #2" page={secondCharPage} paramsPageLabel="secondCharPage" />
+            <CharactersFetcher
+              alignTitle="right"
+              title="Character #2"
+              page={secondCharPage}
+              paramsPageLabel="secondCharPage"
+            />
           </Suspense>
         </div>
       </div>
