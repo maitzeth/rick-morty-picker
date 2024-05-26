@@ -13,13 +13,19 @@ export type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 };
 
+export type CharacterOrder = {
+  order: number;
+}
+
 export type PageParams = {
   page: number;
   paramsPageLabel: string;
-  title: string;
-  alignTitle: 'default' | 'right';
 }
 
-export type RendererProps = PageParams & {
+export type FetcherProps = PageParams & CharacterOrder & {
+  alignTitle: 'default' | 'right';
+};
+
+export type RendererProps = PageParams & CharacterOrder & {
   data: GetCharactersResponse;
 }
