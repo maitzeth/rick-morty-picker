@@ -44,7 +44,7 @@ const Item = ({ data, onClick, selectedCharacterId }: Props) => {
               <StatusBadge status={data.status} />
               <p className="text-xs capitalize">{data.status}</p>
             </div>
-            <p className="text-xs">{data.species}</p>
+            <p className="text-xs text-left">{data.species}</p>
           </div>
         </div>
       </button>
