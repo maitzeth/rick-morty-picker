@@ -1,35 +1,45 @@
 "use client";
-import { CharacterItem } from './CharactersItem';
+import { CharacterStateType, useBearStore } from '@/state/characters';
+import { Character } from '@/types/character';
 import { RendererProps } from '@/types/common';
-import { cn } from '@/utils/common';
+import { useCallback } from 'react';
+import { CharacterItem } from './CharactersItem';
+import { Pagination } from '@/app/components/shared';
 
-export const CharactersRenderer = ({ data, page, paramsPageLabel, title, alignTitle }: RendererProps) => {
+
+export type KeysOf<T> = keyof T;
+
+
+export const CharactersRenderer = ({ data, page, paramsPageLabel, order }: RendererProps) => {
+  const { selectCharacter, characters } = useBearStore();
+
+  const handleSelectCharacter = useCallback((char: Character) => {
+    selectCharacter(char, order);
+  }, [order, selectCharacter]);
+
+  const orderKey = order as keyof CharacterStateType['characters'];
+  const selectedCharacter = characters[orderKey] ? characters[orderKey] : null;
+
   return (
     <div>
-      <header className="mb-10">
-        <h2 className={cn('text-2xl font-bold', {
-          'text-left': alignTitle === 'default',
-          'text-right': alignTitle === 'right',
-        })}>{title}</h2>
-      </header>
-      <div className="border border-gray-200 p-2 rounded-xl">
+      <div className="border border-accent-primary p-2 rounded-xl">
         <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.results.map((character) => {
             return (
               <CharacterItem
                 key={character.id}
-                data={{
-                  id: character.id,
-                  name: character.name,
-                  image: character.image,
-                  status: character.status,
-                  species: character.species,
-                }}
-                onClick={() => console.log(character)}
+                data={character}
+                onClick={handleSelectCharacter}
+                selectedCharacterId={selectedCharacter?.id}
               />
             );
           })}
         </div>
+        <Pagination
+          currentPage={page}
+          totalPages={data.info.pages}
+          paramsPageLabel={paramsPageLabel}
+        />
       </div>
     </div>
   )

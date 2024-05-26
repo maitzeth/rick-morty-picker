@@ -12,26 +12,26 @@ const CharactersPage = ({
   return (
     <main className="min-h-screen">
       <div className="max-w-[2440px] mx-auto px-2 grid md:grid-cols-2 gap-3 py-8">
-        <div>
+        <section>
           <Suspense key={firstCharPage} fallback={<Loader />}>
             <CharactersFetcher
               alignTitle="default"
-              title="Character #1"
               page={firstCharPage}
               paramsPageLabel="firstCharPage"
+              order={1}
             />
           </Suspense>
-        </div>
-        <div>
+        </section>
+        <section>
           <Suspense key={secondCharPage} fallback={<Loader />}>
             <CharactersFetcher
               alignTitle="right"
-              title="Character #2"
               page={secondCharPage}
               paramsPageLabel="secondCharPage"
+              order={2}
             />
           </Suspense>
-        </div>
+        </section>
       </div>
     </main>
   );
