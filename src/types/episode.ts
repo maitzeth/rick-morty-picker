@@ -1,5 +1,3 @@
-import { ApiResponse } from './common';
-
 export interface Episode {
   id: number;
   name: string;
@@ -9,5 +7,3 @@ export interface Episode {
   url: string;
   created: string;
 }
-
-export interface GetEpisodeResponse extends ApiResponse<Episode[]> {};

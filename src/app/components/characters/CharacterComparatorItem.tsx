@@ -1,21 +1,28 @@
-"use client"
 import React from 'react';
-import { useGetEpisode } from '@/hooks/useGetEpisode';
+import { Episode } from '@/types/episode';
 
 interface Props {
-  episodes: string[] | null;
+  data: Episode;
 }
 
-export const CharacterComparatorItem = ({ episodes }: Props) => {
-  const result = useGetEpisode(episodes);
-
-  console.log(result.data);
-
-  if (episodes && episodes.length > 0) {
-    return (
-      <div className="w-full h-[200px] border border-red-500" />
-    );
-  }
-
-  return null;
-};
+export const CharacterComparatorItem = ({ data }: Props) => {
+  return (
+    <li className="flex items-center text-sm gap-3 py-2">
+      <div className="flex-none">
+        <p className="text-accent-primary">
+          {data.episode}
+        </p>
+      </div>
+      <div className="flex-1">
+        <p className="text-gray-500">
+          {data.name}
+        </p>
+      </div>
+      <div className="flex-none">
+        <p className="text-gray-500">
+          {data.air_date}
+        </p>
+      </div>
+    </li>
+  )
+}

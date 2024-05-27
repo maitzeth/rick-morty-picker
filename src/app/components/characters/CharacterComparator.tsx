@@ -1,6 +1,6 @@
 "use client"
 import { useCharacterStore } from '@/state/characters';
-import { CharacterComparatorItem } from './CharacterComparatorItem';
+import { CharacterComparatorRenderer } from './CharacterComparatorRenderer';
 
 export const CharacterComparator = () => {
   const { characters, episodes } = useCharacterStore();
@@ -8,13 +8,19 @@ export const CharacterComparator = () => {
   return (
     <section className="flex gap-2">
       <div className="flex-1">
-        <CharacterComparatorItem episodes={episodes[1]} />
+        <CharacterComparatorRenderer
+          title="Character #1 - Only Episodes"
+          episodes={episodes[1]}
+        />
       </div>
       <div className="flex-1">
-        {/* <CharacterComparatorItem /> */}
+        {/* <CharacterComparatorRenderer /> */}
       </div>
       <div className="flex-1">
-        {/* <CharacterComparatorItem character={characters[2]} /> */}
+        <CharacterComparatorRenderer
+          title="Character #2 - Only Episodes"
+          episodes={episodes[2]}
+        />
       </div>
     </section>
   );
