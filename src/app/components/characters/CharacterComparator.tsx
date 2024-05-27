@@ -14,7 +14,10 @@ export const CharacterComparator = () => {
         />
       </div>
       <div className="flex-1">
-        {/* <CharacterComparatorRenderer /> */}
+        <CharacterComparatorRenderer
+          title="Character #1 & #2 - Shared Episodes"
+          episodes={episodes.shared}
+        />
       </div>
       <div className="flex-1">
         <CharacterComparatorRenderer
