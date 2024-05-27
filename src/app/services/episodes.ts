@@ -1,5 +1,5 @@
-import { CONFIG } from '@/utils/config';
-import { Episode } from '@/types/episode';
+import { CONFIG } from '@/app/utils/config';
+import { Episode } from '@/app/types/episode';
 
 export const fetchEpisodes = async (episodes: string[] | null) => {
   const idsString = episodes?.join(',');

@@ -1,5 +1,5 @@
 import { HTMLAttributes, PropsWithChildren } from 'react';
-import { cn } from '@/utils/common';
+import { cn } from '@/app/utils/common';
 
 interface Props extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {};
 

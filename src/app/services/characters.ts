@@ -1,5 +1,5 @@
-import { CONFIG } from '@/utils/config';
-import { GetCharactersResponse } from '@/types/character';
+import { CONFIG } from '@/app/utils/config';
+import { GetCharactersResponse } from '@/app/types/character';
 
 export const getCharacters = async (page: number) => {
   const result = await fetch(`${CONFIG.RM_API_URL}/character?` + new URLSearchParams({

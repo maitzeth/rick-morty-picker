@@ -1,6 +1,6 @@
 import React from 'react';
-import { CharacterStatus } from '@/types/character';
-import { cn } from '@/utils/common';
+import { CharacterStatus } from '@/app/types/character';
+import { cn } from '@/app/utils/common';
 
 interface Props {
   status: keyof typeof CharacterStatus

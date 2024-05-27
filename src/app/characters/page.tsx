@@ -1,4 +1,4 @@
-import { PageProps } from '@/types/common';
+import { PageProps } from '@/app/types/common';
 import { Suspense } from 'react';
 import { CharactersFetcher } from '../components/characters/CharacterFetcher';
 import { Loader } from '../components/characters/CharacterRenderers';

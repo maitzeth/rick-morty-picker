@@ -1,5 +1,5 @@
 "use client"
-import { useCharacterStore } from '@/state/characters';
+import { useCharacterStore } from '@/app/state/characters';
 import { CharacterComparatorRenderer } from './CharacterComparatorRenderer';
 
 export const CharacterComparator = () => {

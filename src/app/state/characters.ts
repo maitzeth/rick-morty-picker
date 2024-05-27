@@ -1,7 +1,8 @@
 import { create } from 'zustand';
-import { Character, CharacterGender } from '@/types/character';
+import { Character } from '@/app/types/character';
 import { toast } from 'sonner';
-import { MESSAGES } from '@/utils/constants';
+import { MESSAGES } from '@/app/utils/constants';
+import { extractEpisodesId, getSharedElements } from '@/app/utils/common';
 
 export type CharacterStateType = {
   characters: {
@@ -15,28 +16,8 @@ export type CharacterStateType = {
   }
 };
 
-const extractEpisodesId = (episodes: string[] | undefined) => {
-  if (episodes && episodes.length > 0) {
-    return episodes.map((episode) => {
-      const id = episode.split('/').pop();
-  
-      return id as string;
-    });
-  }
-
-  return null;
-};
-
-function getSharedElements(array1: string[], array2: string[]) {
-  return array1.filter(element => array2.includes(element));
-}
-
 interface CharacterState extends CharacterStateType {
   selectCharacter: (character: Character, order: number) => void
-}
-
-const what = (episodes1: any, episodes2: any) => {
-  console.log(episodes1, episodes2);
 }
 
 export const useCharacterStore = create<CharacterState>()((set) => ({

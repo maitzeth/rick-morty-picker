@@ -1,5 +1,5 @@
 import React from 'react';
-import { Episode } from '@/types/episode';
+import { Episode } from '@/app/types/episode';
 
 interface Props {
   data: Episode;

@@ -1,7 +1,7 @@
 "use client";
-import { CharacterStateType, useCharacterStore } from '@/state/characters';
-import { Character } from '@/types/character';
-import { RendererProps } from '@/types/common';
+import { CharacterStateType, useCharacterStore } from '@/app/state/characters';
+import { Character } from '@/app/types/character';
+import { RendererProps } from '@/app/types/common';
 import { useCallback } from 'react';
 import { CharacterItem } from './CharactersItem';
 import { Pagination } from '@/app/components/shared';
