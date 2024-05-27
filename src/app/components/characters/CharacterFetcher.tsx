@@ -1,7 +1,7 @@
-import { getCharacters } from '@/services/characters';
-import { FetcherProps } from '@/types/common';
+import { getCharacters } from '@/app/services/characters';
+import { FetcherProps } from '@/app/types/common';
 import { CharactersRenderer } from './CharacterRenderers';
-import { cn } from '@/utils/common';
+import { cn } from '@/app/utils/common';
 
 export const CharactersFetcher = async ({ page, paramsPageLabel, alignTitle, order }: FetcherProps) => {
   const data = await getCharacters(page);

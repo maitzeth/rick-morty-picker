@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { useGetEpisode } from '@/hooks/useGetEpisode';
+import { useGetEpisode } from '@/app/hooks/useGetEpisode';
 import { CharacterComparatorItem } from './CharacterComparatorItem';
 import { SpinnerLoading } from '@/app/components/shared';
 import { IoMdAlert } from "react-icons/io";

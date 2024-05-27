@@ -1,4 +1,4 @@
-import { GetCharactersResponse } from '@/types/character';
+import { GetCharactersResponse } from '@/app/types/character';
 
 export type KeysOf<T> = keyof T;
 

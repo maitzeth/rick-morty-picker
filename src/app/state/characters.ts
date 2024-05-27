@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { Character } from '@/types/character';
+import { Character } from '@/app/types/character';
 import { toast } from 'sonner';
-import { MESSAGES } from '@/utils/constants';
-import { extractEpisodesId, getSharedElements } from '@/utils/common';
+import { MESSAGES } from '@/app/utils/constants';
+import { extractEpisodesId, getSharedElements } from '@/app/utils/common';
 
 export type CharacterStateType = {
   characters: {

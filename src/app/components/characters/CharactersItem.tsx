@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { Card, StatusBadge } from '@/app/components/shared';
 import Image from 'next/image';
-import { Character } from '@/types/character';
-import { cn } from '@/utils/common';
+import { Character } from '@/app/types/character';
+import { cn } from '@/app/utils/common';
 
 interface Props {
   data: Character,
