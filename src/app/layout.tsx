@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'sonner'
 import { cn } from "@/utils/common";
+import { ReactQueryProvider } from '@/app/components/shared';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, 'overflow-x-hidden')}>
         <Toaster />
-        {children}
+        <ReactQueryProvider>
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );

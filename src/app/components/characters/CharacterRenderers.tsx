@@ -1,17 +1,13 @@
 "use client";
-import { CharacterStateType, useBearStore } from '@/state/characters';
+import { CharacterStateType, useCharacterStore } from '@/state/characters';
 import { Character } from '@/types/character';
 import { RendererProps } from '@/types/common';
 import { useCallback } from 'react';
 import { CharacterItem } from './CharactersItem';
 import { Pagination } from '@/app/components/shared';
 
-
-export type KeysOf<T> = keyof T;
-
-
 export const CharactersRenderer = ({ data, page, paramsPageLabel, order }: RendererProps) => {
-  const { selectCharacter, characters } = useBearStore();
+  const { selectCharacter, characters } = useCharacterStore();
 
   const handleSelectCharacter = useCallback((char: Character) => {
     selectCharacter(char, order);

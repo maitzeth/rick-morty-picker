@@ -1,10 +1,7 @@
 import { GetCharactersResponse } from '@/types/character';
 
-/**
- * This type alias receive additional properties, including a className to allow for custom styling.
- *
- * @public
-*/
+export type KeysOf<T> = keyof T;
+
 export type PropsWithClassName<T = unknown> = T & {
   className?: string;
 };
@@ -28,4 +25,14 @@ export type FetcherProps = PageParams & CharacterOrder & {
 
 export type RendererProps = PageParams & CharacterOrder & {
   data: GetCharactersResponse;
+}
+
+export type ApiResponse<T = unknown> = {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: T;
 }
