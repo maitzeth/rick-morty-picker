@@ -1,3 +1,5 @@
+import { ApiResponse } from './common';
+
 export const CharacterStatus = {
   Alive: 'Alive',
   Dead: 'Dead',
@@ -32,12 +34,4 @@ export interface Character {
   created: string;
 }
 
-export interface GetCharactersResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
-  results: Character[]; 
-}
+export interface GetCharactersResponse extends ApiResponse<Character[]> {}

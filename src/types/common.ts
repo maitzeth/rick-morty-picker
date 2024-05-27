@@ -26,3 +26,13 @@ export type FetcherProps = PageParams & CharacterOrder & {
 export type RendererProps = PageParams & CharacterOrder & {
   data: GetCharactersResponse;
 }
+
+export type ApiResponse<T = unknown> = {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: T;
+}
