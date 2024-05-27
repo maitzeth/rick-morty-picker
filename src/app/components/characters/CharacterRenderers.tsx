@@ -6,10 +6,6 @@ import { useCallback } from 'react';
 import { CharacterItem } from './CharactersItem';
 import { Pagination } from '@/app/components/shared';
 
-
-export type KeysOf<T> = keyof T;
-
-
 export const CharactersRenderer = ({ data, page, paramsPageLabel, order }: RendererProps) => {
   const { selectCharacter, characters } = useCharacterStore();
 

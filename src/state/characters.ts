@@ -8,6 +8,22 @@ export type CharacterStateType = {
     1: Character | null;
     2: Character | null;
   };
+  episodes: {
+    1: string[] | null;
+    2: string[] | null;
+  }
+};
+
+const extractEpisodesId = (episodes: string[] | undefined) => {
+  if (episodes && episodes.length > 0) {
+    return episodes.map((episode) => {
+      const id = episode.split('/').pop();
+  
+      return id as string;
+    });
+  }
+
+  return null;
 };
 
 interface CharacterState extends CharacterStateType {
@@ -15,31 +31,14 @@ interface CharacterState extends CharacterStateType {
 }
 
 export const useCharacterStore = create<CharacterState>()((set) => ({
- characters: {
-    1: {
-      "id": 17,
-      "name": "Annie",
-      "status": "Alive",
-      "species": "Human",
-      "type": "",
-      "gender": CharacterGender.Female,
-      "origin": {
-          "name": "Earth (C-137)",
-          "url": "https://rickandmortyapi.com/api/location/1"
-      },
-      "location": {
-          "name": "Anatomy Park",
-          "url": "https://rickandmortyapi.com/api/location/5"
-      },
-      "image": "https://rickandmortyapi.com/api/character/avatar/17.jpeg",
-      "episode": [
-          "https://rickandmortyapi.com/api/episode/3"
-      ],
-      "url": "https://rickandmortyapi.com/api/character/17",
-      "created": "2017-11-04T22:21:24.481Z"
-  },
+  characters: {
+    1: null,
     2: null
- },
+  },
+  episodes: {
+    1: null,
+    2: null,
+  },
   selectCharacter: (character, order) => {
     const characterId = character.id;
 
@@ -55,13 +54,15 @@ export const useCharacterStore = create<CharacterState>()((set) => ({
 
       toast.success(`${character.name} ${MESSAGES.selectionSuccess}`);
 
-      console.log(state);
-
       return {
         ...state,
         characters: {
           ...state.characters,
           [order]: character
+        },
+        episodes: {
+          ...state.episodes,
+          [order]: extractEpisodesId(character.episode)
         }
       };
     });

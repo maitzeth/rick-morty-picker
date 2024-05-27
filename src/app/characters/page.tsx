@@ -2,6 +2,7 @@ import { PageProps } from '@/types/common';
 import { Suspense } from 'react';
 import { CharactersFetcher } from '../components/characters/CharacterFetcher';
 import { Loader } from '../components/characters/CharacterRenderers';
+import { CharacterComparator } from '../components/characters/CharacterComparator';
 
 const CharactersPage = ({
   searchParams
@@ -10,8 +11,8 @@ const CharactersPage = ({
   const secondCharPage = typeof searchParams.secondCharPage === 'string' ? Number(searchParams.secondCharPage) : 1;
 
   return (
-    <main className="min-h-screen">
-      <div className="max-w-[2440px] mx-auto px-2 grid md:grid-cols-2 gap-3 py-8">
+    <main className="min-h-screen px-2 py-8 space-y-10">
+      <div className="max-w-[2440px] mx-auto grid md:grid-cols-2 gap-3">
         <section>
           <Suspense key={firstCharPage} fallback={<Loader />}>
             <CharactersFetcher
@@ -33,6 +34,7 @@ const CharactersPage = ({
           </Suspense>
         </section>
       </div>
+      <CharacterComparator />
     </main>
   );
 };
