@@ -1,13 +1,17 @@
 import { CONFIG } from '@/app/utils/config';
 import { Episode } from '@/app/types/episode';
 
-export const fetchEpisodes = async (episodes: string[] | null) => {
+export const getEpisodes = async (episodes: string[] | null) => {
   const idsString = episodes?.join(',');
+
+  if (!episodes) {
+    throw new Error('No episodes were provided');
+  }
 
   try {
     const result = await fetch(`${CONFIG.RM_API_URL}/episode/${idsString}`);
 
-    if (!result.ok) {
+    if (!result || !result.ok) {
       throw new Error('Something weird happened');
     }
 
