@@ -15,7 +15,7 @@ const Item = ({ data, onClick, selectedCharacterId, displayImage = true }: Props
   const isSelected = selectedCharacterId === data.id;
 
   return (
-    <Card className="hover:shadow-xl">
+    <Card className="hover:shadow-xl overflow-hidden">
       <button
         type="button"
         className={cn("flex items-center", {
@@ -26,7 +26,7 @@ const Item = ({ data, onClick, selectedCharacterId, displayImage = true }: Props
       >
         <div className='flex-none'>
           {displayImage && (
-            <div className="relative w-[65px] h-[65px] overflow-hidden">
+            <div className="relative size-[80px] md:size-[65px] overflow-hidden">
               <Image
                 fill
                 src={data.image}
@@ -41,9 +41,8 @@ const Item = ({ data, onClick, selectedCharacterId, displayImage = true }: Props
           <p className="font-bold text-base line-clamp-1 text-left" title={data.name}>
             {data.name}
           </p>
-          <div className="flex gap-1">
-            <div className="flex items-center gap-1">
-              {/* @ts-ignore */}
+          <div className="hidden md:flex gap-1">
+            <div className="flex items-center gap-1 ">
               <StatusBadge status={data.status} />
               <p className="text-xs capitalize">{data.status}</p>
             </div>
