@@ -1,6 +1,15 @@
-import { cleanup, render } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { prettyDOM } from '@testing-library/dom';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    }
+  }
+});
 
 const debug = (dom?: Element | Document) => {
   return prettyDOM(dom);
@@ -8,12 +17,15 @@ const debug = (dom?: Element | Document) => {
 
 const customRender = (ui: React.ReactElement, options = {}) => {
   return render(ui, {
-    // wrap provider(s) here if needed
-    wrapper: ({ children }) => children,
+    wrapper: ({ children }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    ),
     ...options,
   });
 };
 
 export * from '@testing-library/react';
-export { customRender as render };
-export { debug };
+export { debug, customRender as render };
+// export { debug, render };

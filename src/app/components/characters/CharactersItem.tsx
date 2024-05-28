@@ -8,9 +8,10 @@ interface Props {
   data: Character,
   onClick: (character: Character) => void;
   selectedCharacterId: number | undefined;
+  displayImage?: boolean;
 }
 
-const Item = ({ data, onClick, selectedCharacterId }: Props) => {
+const Item = ({ data, onClick, selectedCharacterId, displayImage = true }: Props) => {
   const isSelected = selectedCharacterId === data.id;
 
   return (
@@ -24,15 +25,17 @@ const Item = ({ data, onClick, selectedCharacterId }: Props) => {
         disabled={isSelected}
       >
         <div className='flex-none'>
-          <div className="relative w-[65px] h-[65px] overflow-hidden">
-            <Image
-              fill
-              src={data.image}
-              alt={`image of ${data.name}`}
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
+          {displayImage && (
+            <div className="relative w-[65px] h-[65px] overflow-hidden">
+              <Image
+                fill
+                src={data.image}
+                alt={`image of ${data.name}`}
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          )}
         </div>
         <div className="p-3 flex-1">
           <p className="font-bold text-base line-clamp-1 text-left" title={data.name}>

@@ -15,6 +15,7 @@ export const SpinnerLoading = () => {
           }
         }
       }}
+      aria-label="content is loading..."
       animate="animate"
     />
   );

@@ -3,8 +3,9 @@ import { FetcherProps } from '@/app/types/common';
 import { CharactersRenderer } from './CharacterRenderers';
 import { cn } from '@/app/utils/common';
 
-export const CharactersFetcher = async ({ page, paramsPageLabel, alignTitle, order }: FetcherProps) => {
+export const CharactersFetcher = async ({ page, alignTitle, order, paramsPageLabel }: FetcherProps) => {
   const data = await getCharacters(page);
+  
   return (
     <>
       <header className="mb-10">
