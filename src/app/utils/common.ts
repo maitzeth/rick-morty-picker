@@ -9,14 +9,16 @@ export const extractEpisodesId = (episodes: string[] | undefined) => {
   if (episodes && episodes.length > 0) {
     return episodes.map((episode) => {
       const id = episode.split('/').pop();
-  
-      return id as string;
-    });
+      return Number(id);
+    }).filter(Number).map(String);
   }
 
   return null;
 };
 
 export const getSharedElements = (array1: string[], array2: string[]) => {
-  return array1.filter(element => array2.includes(element));
+  const parsedArr1 = array1.map(text => text.toLowerCase());
+  const parsedArr2 = array2.map(text => text.toLowerCase());
+  
+  return parsedArr1.filter(element => parsedArr2.includes(element));
 }

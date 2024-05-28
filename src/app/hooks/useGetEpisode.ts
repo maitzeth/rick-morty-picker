@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchEpisodes } from '@/app/services/episodes';
+import { getEpisodes } from '@/app/services/episodes';
 
 export const useGetEpisode = (episodes: string[] | null) => {
-  const result = useQuery({
+  return useQuery({
     queryKey: ['episodes', episodes],
     queryFn: () => {
-      return fetchEpisodes(episodes);
+      return getEpisodes(episodes);
     },
     enabled: Boolean(episodes),
   });
-
-  return result;
 }

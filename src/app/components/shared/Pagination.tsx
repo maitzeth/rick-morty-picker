@@ -30,10 +30,10 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
         disabledLinkClassName="opacity-50 cursor-not-allowed"
 
         previousLabel={
-          <MdOutlineKeyboardArrowLeft aria-label="prev icon" size={20} />
+          <MdOutlineKeyboardArrowLeft aria-label="prev page icon" size={20} />
         }
         nextLabel={
-          <MdOutlineKeyboardArrowRight aria-label="next icon" size={20} />
+          <MdOutlineKeyboardArrowRight aria-label="next page icon" size={20} />
         }
 
         breakLabel="..."

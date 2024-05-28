@@ -41,7 +41,16 @@ export const CharacterComparatorRenderer = ({ episodes, title }: Props) => {
       return (
         <ul className="divide-y divide-gray-200">
           {data.map((episode, index) => {
-            return <CharacterComparatorItem key={`comparator-${index}`} data={episode} />
+            return (
+              <CharacterComparatorItem
+                key={`comparator-${index}`}
+                data={{
+                  air_date: episode.air_date,
+                  name: episode.name,
+                  episode: episode.episode
+                }}
+              />
+            )
           })}
         </ul>
       );
@@ -60,5 +69,5 @@ export const CharacterComparatorRenderer = ({ episodes, title }: Props) => {
     );
   }
 
-  return null;
+  return <div aria-label={`no episodes found for ${title}`} />;
 };

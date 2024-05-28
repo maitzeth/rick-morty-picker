@@ -24,7 +24,7 @@ export type FetcherProps = PageParams & CharacterOrder & {
 };
 
 export type RendererProps = PageParams & CharacterOrder & {
-  data: GetCharactersResponse;
+  data: GetCharactersResponse | undefined;
 }
 
 export type ApiResponse<T = unknown> = {

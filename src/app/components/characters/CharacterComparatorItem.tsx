@@ -2,7 +2,11 @@ import React from 'react';
 import { Episode } from '@/app/types/episode';
 
 interface Props {
-  data: Episode;
+  data: {
+    episode: Episode['episode'];
+    name: Episode['name'];
+    air_date: Episode['air_date'];
+  };
 }
 
 export const CharacterComparatorItem = ({ data }: Props) => {
@@ -24,5 +28,5 @@ export const CharacterComparatorItem = ({ data }: Props) => {
         </p>
       </div>
     </li>
-  )
+  );
 }
