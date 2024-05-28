@@ -2,6 +2,7 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ReactPaginate from 'react-paginate';
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useResponsive } from '@/app/hooks/useResponsive';
 
 type Props = {
   currentPage: number;
@@ -13,6 +14,7 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { isDesktop } = useResponsive();
 
   return (
     <div className="flex justify-center mt-10">
@@ -21,7 +23,7 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
 
         breakLinkClassName="bg-accent-primary text-white px-4 py-2 opacity-50"
         activeLinkClassName="bg-accent-secondary text-accent-primary"
-        pageLinkClassName="bg-accent-primary text-white px-4 py-2"
+        pageLinkClassName="bg-accent-primary text-white px-2 lg:px-4 py-2"
 
         nextClassName="bg-accent-primary text-white py-2 px-4 border-l border-gray-200 rounded-r-md"
         previousClassName="bg-accent-primary text-white py-2 px-4 border-r border-gray-200 rounded-l-md"
@@ -30,13 +32,13 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
         disabledLinkClassName="opacity-50 cursor-not-allowed"
 
         previousLabel={
-          <MdOutlineKeyboardArrowLeft aria-label="prev page icon" size={20} />
+         <MdOutlineKeyboardArrowLeft aria-label="prev page icon" size={20} />
         }
         nextLabel={
-          <MdOutlineKeyboardArrowRight aria-label="next page icon" size={20} />
+           <MdOutlineKeyboardArrowRight aria-label="next page icon" size={20} />
         }
 
-        breakLabel="..."
+        breakLabel={isDesktop ? "..." : null}
         onPageChange={(event) => {
           const nextPage = event.selected;
 
@@ -44,7 +46,7 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
           params.set(paramsPageLabel, `${nextPage + 1}`);
           replace(`${pathname}?${params.toString()}`)
         }}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={isDesktop ? 3 : 0}
         pageCount={totalPages}
         initialPage={currentPage - 1}
         

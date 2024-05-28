@@ -6,7 +6,7 @@ export const CharacterComparator = () => {
   const { episodes } = useCharacterStore();
 
   return (
-    <section className="flex gap-2">
+    <section className="flex flex-wrap flex-col md:flex-row gap-2">
       <div className="flex-1">
         <CharacterComparatorRenderer
           title="Character #1 - Only Episodes"
