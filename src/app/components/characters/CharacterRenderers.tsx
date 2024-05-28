@@ -18,25 +18,31 @@ export const CharactersRenderer = ({ data, page, paramsPageLabel, order }: Rende
 
   return (
     <div>
-      <div className="border border-accent-primary p-2 rounded-xl py-5">
-        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {data.results.map((character) => {
-            return (
-              <CharacterItem
-                key={character.id}
-                data={character}
-                onClick={handleSelectCharacter}
-                selectedCharacterId={selectedCharacter?.id}
-              />
-            );
-          })}
+      {data ? (
+        <div className="border border-accent-primary p-2 rounded-xl py-5">
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {data.results.map((character) => {
+              return (
+                <CharacterItem
+                  key={character.id}
+                  data={character}
+                  onClick={handleSelectCharacter}
+                  selectedCharacterId={selectedCharacter?.id}
+                />
+              );
+            })}
+          </div>
+          <Pagination
+            currentPage={page}
+            totalPages={data.info.pages}
+            paramsPageLabel={paramsPageLabel}
+          />
         </div>
-        <Pagination
-          currentPage={page}
-          totalPages={data.info.pages}
-          paramsPageLabel={paramsPageLabel}
-        />
-      </div>
+      ) : (
+        <div>
+          <p>No characters found</p>
+        </div>
+      )}
     </div>
   )
 };

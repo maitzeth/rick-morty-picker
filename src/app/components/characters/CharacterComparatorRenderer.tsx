@@ -69,5 +69,5 @@ export const CharacterComparatorRenderer = ({ episodes, title }: Props) => {
     );
   }
 
-  return <div aria-label="no episodes found" />;
+  return <div aria-label={`no episodes found for ${title}`} />;
 };

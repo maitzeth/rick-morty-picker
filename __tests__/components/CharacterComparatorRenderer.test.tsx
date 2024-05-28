@@ -94,11 +94,11 @@ describe('<CharacterComparatorRenderer />', () => {
 
   it('should render empty div when episodes are null', () => {
     render(<CharacterComparatorRenderer episodes={null} title="Episode Comparison" />);
-    expect(screen.getByLabelText('no episodes found')).toBeInTheDocument();
+    expect(screen.getByLabelText('no episodes found for Episode Comparison')).toBeInTheDocument();
   });
 
   it('should render empty div when episodes are empty array', () => {
     render(<CharacterComparatorRenderer episodes={[]} title="Episode Comparison" />);
-    expect(screen.getByLabelText('no episodes found')).toBeInTheDocument();
+    expect(screen.getByLabelText('no episodes found for Episode Comparison')).toBeInTheDocument();
   });
 });

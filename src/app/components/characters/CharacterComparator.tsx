@@ -3,7 +3,7 @@ import { useCharacterStore } from '@/app/state/characters';
 import { CharacterComparatorRenderer } from './CharacterComparatorRenderer';
 
 export const CharacterComparator = () => {
-  const { characters, episodes } = useCharacterStore();
+  const { episodes } = useCharacterStore();
 
   return (
     <section className="flex gap-2">
