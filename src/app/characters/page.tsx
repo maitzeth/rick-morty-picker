@@ -11,7 +11,7 @@ const CharactersPage = ({
   const secondCharPage = typeof searchParams.secondCharPage === 'string' ? Number(searchParams.secondCharPage) : 1;
 
   return (
-    <main className="min-h-screen px-2 py-8 space-y-10">
+    <main className="min-h-screen px-2 py-8 space-y-10 bg-[url('/pxfuel.jpg')]">
       <div className="max-w-[2440px] mx-auto grid md:grid-cols-2 gap-3">
         <section>
           <Suspense key={firstCharPage} fallback={<Loader />}>

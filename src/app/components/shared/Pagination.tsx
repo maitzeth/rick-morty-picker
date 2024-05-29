@@ -14,7 +14,6 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { isDesktop } = useResponsive();
 
   return (
     <div className="flex justify-center mt-10">
@@ -38,7 +37,7 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
            <MdOutlineKeyboardArrowRight aria-label="next page icon" size={20} />
         }
 
-        breakLabel={isDesktop ? "..." : null}
+        breakLabel={null}
         onPageChange={(event) => {
           const nextPage = event.selected;
 
@@ -46,7 +45,7 @@ export const Pagination = ({ currentPage, totalPages, paramsPageLabel }: Props) 
           params.set(paramsPageLabel, `${nextPage + 1}`);
           replace(`${pathname}?${params.toString()}`)
         }}
-        pageRangeDisplayed={isDesktop ? 3 : 0}
+        pageRangeDisplayed={0}
         pageCount={totalPages}
         initialPage={currentPage - 1}
         

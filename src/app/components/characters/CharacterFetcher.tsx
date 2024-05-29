@@ -9,7 +9,7 @@ export const CharactersFetcher = async ({ page, alignTitle, order, paramsPageLab
   return (
     <>
       <header className="mb-10">
-        <h2 className={cn('text-2xl font-bold', {
+        <h2 className={cn('text-2xl font-bold text-white', {
           'text-left': alignTitle === 'default',
           'text-right': alignTitle === 'right',
         })}>
