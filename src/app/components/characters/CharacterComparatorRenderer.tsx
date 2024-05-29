@@ -58,7 +58,7 @@ export const CharacterComparatorRenderer = ({ episodes, title }: Props) => {
 
 
     return (
-      <div className="border border-accent-primary">
+      <div className="border border-accent-primary bg-white rounded-md">
         <header className="border-b border-accent-primary px-4 py-3">
           {title}
         </header>
